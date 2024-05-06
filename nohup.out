@@ -294,3 +294,203 @@ for t in df.OriginalTweet:
 AttributeError: module 'emoji' has no attribute 'get_emoji_regexp'
 
 [NbConvertApp] Writing 265204 bytes to 05_05_BERT.ipynb
+[NbConvertApp] WARNING | pattern '06_05_distilbert.ipynb\xa0' matched no files
+[NbConvertApp] Converting notebook 06_05_distilbert.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python3
+2024-05-06 11:29:21.294717: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-12.0/lib64:
+2024-05-06 11:29:21.294767: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+The current process just got forked. Disabling parallelism to avoid deadlocks...
+To disable this warning, please explicitly set TOKENIZERS_PARALLELISM=(true | false)
+The current process just got forked. Disabling parallelism to avoid deadlocks...
+To disable this warning, please explicitly set TOKENIZERS_PARALLELISM=(true | false)
+Traceback (most recent call last):
+  File "/raid/home/dgx914/.local/bin/jupyter-nbconvert", line 8, in <module>
+    sys.exit(main())
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/jupyter_core/application.py", line 264, in launch_instance
+    return super(JupyterApp, cls).launch_instance(argv=argv, **kwargs)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/traitlets/config/application.py", line 664, in launch_instance
+    app.start()
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbconvert/nbconvertapp.py", line 350, in start
+    self.convert_notebooks()
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbconvert/nbconvertapp.py", line 524, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbconvert/nbconvertapp.py", line 489, in convert_single_notebook
+    output, resources = self.export_single_notebook(notebook_filename, resources, input_buffer=input_buffer)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbconvert/nbconvertapp.py", line 418, in export_single_notebook
+    output, resources = self.exporter.from_filename(notebook_filename, resources=resources)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbconvert/exporters/exporter.py", line 181, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbconvert/exporters/exporter.py", line 199, in from_file
+    return self.from_notebook_node(nbformat.read(file_stream, as_version=4), resources=resources, **kw)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbconvert/exporters/notebook.py", line 32, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbconvert/exporters/exporter.py", line 143, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbconvert/exporters/exporter.py", line 318, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbconvert/preprocessors/base.py", line 47, in __call__
+    return self.preprocess(nb, resources)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbconvert/preprocessors/execute.py", line 79, in preprocess
+    self.execute()
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/usr/lib/python3.6/asyncio/base_events.py", line 484, in run_until_complete
+    return future.result()
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbclient/client.py", line 560, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbconvert/preprocessors/execute.py", line 123, in async_execute_cell
+    cell, resources = self.preprocess_cell(cell, self.resources, cell_index)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbconvert/preprocessors/execute.py", line 146, in preprocess_cell
+    cell = run_sync(NotebookClient.async_execute_cell)(self, cell, index, store_history=self.store_history)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nest_asyncio.py", line 98, in run_until_complete
+    return f.result()
+  File "/usr/lib/python3.6/asyncio/tasks.py", line 180, in _step
+    result = coro.send(None)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbclient/client.py", line 854, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbclient/client.py", line 756, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Calculate confusion matrix and accuracy
+true_labels = y_test  # Replace with your ground truth labels
+cm = confusion_matrix(true_vals, predictions)
+accuracy = accuracy_score(true_vals, predictions)
+
+print("Confusion Matrix:\n", cm)
+print("Final Accuracy:", accuracy)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m<ipython-input-1-34a33cd326c4>[0m in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [0;31m# Calculate confusion matrix and accuracy[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 2[0;31m [0mtrue_labels[0m [0;34m=[0m [0my_test[0m  [0;31m# Replace with your ground truth labels[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      3[0m [0mcm[0m [0;34m=[0m [0mconfusion_matrix[0m[0;34m([0m[0mtrue_vals[0m[0;34m,[0m [0mpredictions[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0maccuracy[0m [0;34m=[0m [0maccuracy_score[0m[0;34m([0m[0mtrue_vals[0m[0;34m,[0m [0mpredictions[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0;34m[0m[0m
+
+[0;31mNameError[0m: name 'y_test' is not defined
+NameError: name 'y_test' is not defined
+
+[NbConvertApp] WARNING | pattern '06_05_distilbert.ipynb\xa0' matched no files
+[NbConvertApp] Converting notebook 06_05_distilbert.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python3
+2024-05-06 11:36:58.477660: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-12.0/lib64:
+2024-05-06 11:36:58.477731: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+The current process just got forked. Disabling parallelism to avoid deadlocks...
+To disable this warning, please explicitly set TOKENIZERS_PARALLELISM=(true | false)
+The current process just got forked. Disabling parallelism to avoid deadlocks...
+To disable this warning, please explicitly set TOKENIZERS_PARALLELISM=(true | false)
+Traceback (most recent call last):
+  File "/raid/home/dgx914/.local/bin/jupyter-nbconvert", line 8, in <module>
+    sys.exit(main())
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/jupyter_core/application.py", line 264, in launch_instance
+    return super(JupyterApp, cls).launch_instance(argv=argv, **kwargs)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/traitlets/config/application.py", line 664, in launch_instance
+    app.start()
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbconvert/nbconvertapp.py", line 350, in start
+    self.convert_notebooks()
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbconvert/nbconvertapp.py", line 524, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbconvert/nbconvertapp.py", line 489, in convert_single_notebook
+    output, resources = self.export_single_notebook(notebook_filename, resources, input_buffer=input_buffer)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbconvert/nbconvertapp.py", line 418, in export_single_notebook
+    output, resources = self.exporter.from_filename(notebook_filename, resources=resources)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbconvert/exporters/exporter.py", line 181, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbconvert/exporters/exporter.py", line 199, in from_file
+    return self.from_notebook_node(nbformat.read(file_stream, as_version=4), resources=resources, **kw)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbconvert/exporters/notebook.py", line 32, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbconvert/exporters/exporter.py", line 143, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbconvert/exporters/exporter.py", line 318, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbconvert/preprocessors/base.py", line 47, in __call__
+    return self.preprocess(nb, resources)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbconvert/preprocessors/execute.py", line 79, in preprocess
+    self.execute()
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/usr/lib/python3.6/asyncio/base_events.py", line 484, in run_until_complete
+    return future.result()
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbclient/client.py", line 560, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbconvert/preprocessors/execute.py", line 123, in async_execute_cell
+    cell, resources = self.preprocess_cell(cell, self.resources, cell_index)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbconvert/preprocessors/execute.py", line 146, in preprocess_cell
+    cell = run_sync(NotebookClient.async_execute_cell)(self, cell, index, store_history=self.store_history)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nest_asyncio.py", line 98, in run_until_complete
+    return f.result()
+  File "/usr/lib/python3.6/asyncio/tasks.py", line 180, in _step
+    result = coro.send(None)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbclient/client.py", line 854, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/raid/home/dgx914/.local/lib/python3.6/site-packages/nbclient/client.py", line 756, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Calculate confusion matrix and accuracy
+cm = confusion_matrix(true_vals, predictions)
+accuracy = accuracy_score(true_vals, predictions)
+
+print("Confusion Matrix:\n", cm)
+print("Final Accuracy:", accuracy)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+[0;32m<ipython-input-1-a7d0d2945f8a>[0m in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [0;31m# Calculate confusion matrix and accuracy[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 2[0;31m [0mcm[0m [0;34m=[0m [0mconfusion_matrix[0m[0;34m([0m[0mtrue_vals[0m[0;34m,[0m [0mpredictions[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      3[0m [0maccuracy[0m [0;34m=[0m [0maccuracy_score[0m[0;34m([0m[0mtrue_vals[0m[0;34m,[0m [0mpredictions[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0;34m[0m[0m
+[1;32m      5[0m [0mprint[0m[0;34m([0m[0;34m"Confusion Matrix:\n"[0m[0;34m,[0m [0mcm[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/.local/lib/python3.6/site-packages/sklearn/utils/validation.py[0m in [0;36minner_f[0;34m(*args, **kwargs)[0m
+[1;32m     61[0m             [0mextra_args[0m [0;34m=[0m [0mlen[0m[0;34m([0m[0margs[0m[0;34m)[0m [0;34m-[0m [0mlen[0m[0;34m([0m[0mall_args[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     62[0m             [0;32mif[0m [0mextra_args[0m [0;34m<=[0m [0;36m0[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 63[0;31m                 [0;32mreturn[0m [0mf[0m[0;34m([0m[0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     64[0m [0;34m[0m[0m
+[1;32m     65[0m             [0;31m# extra_args > 0[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/.local/lib/python3.6/site-packages/sklearn/metrics/_classification.py[0m in [0;36mconfusion_matrix[0;34m(y_true, y_pred, labels, sample_weight, normalize)[0m
+[1;32m    297[0m [0;34m[0m[0m
+[1;32m    298[0m     """
+[0;32m--> 299[0;31m     [0my_type[0m[0;34m,[0m [0my_true[0m[0;34m,[0m [0my_pred[0m [0;34m=[0m [0m_check_targets[0m[0;34m([0m[0my_true[0m[0;34m,[0m [0my_pred[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    300[0m     [0;32mif[0m [0my_type[0m [0;32mnot[0m [0;32min[0m [0;34m([0m[0;34m"binary"[0m[0;34m,[0m [0;34m"multiclass"[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    301[0m         [0;32mraise[0m [0mValueError[0m[0;34m([0m[0;34m"%s is not supported"[0m [0;34m%[0m [0my_type[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/.local/lib/python3.6/site-packages/sklearn/metrics/_classification.py[0m in [0;36m_check_targets[0;34m(y_true, y_pred)[0m
+[1;32m     91[0m     [0;32mif[0m [0mlen[0m[0;34m([0m[0my_type[0m[0;34m)[0m [0;34m>[0m [0;36m1[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     92[0m         raise ValueError("Classification metrics can't handle a mix of {0} "
+[0;32m---> 93[0;31m                          "and {1} targets".format(type_true, type_pred))
+[0m[1;32m     94[0m [0;34m[0m[0m
+[1;32m     95[0m     [0;31m# We can't have more than one value on y_type => The set is no more needed[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mValueError[0m: Classification metrics can't handle a mix of multiclass and continuous-multioutput targets
+ValueError: Classification metrics can't handle a mix of multiclass and continuous-multioutput targets
+
+[NbConvertApp] WARNING | pattern '06_05_distilbert.ipynb\xa0' matched no files
+[NbConvertApp] Converting notebook 06_05_distilbert.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python3
+2024-05-06 11:48:59.440485: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcudart.so.11.0'; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: /usr/local/cuda-12.0/lib64:
+2024-05-06 11:48:59.440532: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+The current process just got forked. Disabling parallelism to avoid deadlocks...
+To disable this warning, please explicitly set TOKENIZERS_PARALLELISM=(true | false)
+The current process just got forked. Disabling parallelism to avoid deadlocks...
+To disable this warning, please explicitly set TOKENIZERS_PARALLELISM=(true | false)
+[NbConvertApp] Writing 253562 bytes to 06_05_distilbert.ipynb
